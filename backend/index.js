@@ -10,6 +10,7 @@ dotenv.config();
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import authRoutes from "./routes/auth.routes.js";
+import paymentRoutes from "./routes/payment.routes.js";
 //import { connectToRedisDB } from "./redis/redisConfig.js";
 //import { redisClient } from "./redis/redisConfig.js";
 
@@ -58,6 +59,7 @@ app.get("/np/api/v1", (req, res) => {
 
 //routes
 app.use("/np/api/v1/auth", authRoutes);
+app.use("/np/api/v1/payment", paymentRoutes);
 
 app.listen(PORT, () => {
     connectToMongoDB();
