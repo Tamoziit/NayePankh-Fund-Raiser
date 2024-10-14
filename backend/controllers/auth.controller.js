@@ -24,7 +24,7 @@ export const signup = async (req, res) => {
 
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
-        const referenceCode = generateReferenceCode(7);
+		const referenceCode = generateReferenceCode(7);
 
 		const newUser = new User({
 			name,
@@ -35,7 +35,7 @@ export const signup = async (req, res) => {
 		});
 
 		if (newUser) {
-            //req.session.user = newUser;
+			//req.session.user = newUser;
 
 			await newUser.save();
 			return res.status(201).json({
@@ -50,7 +50,42 @@ export const signup = async (req, res) => {
 		}
 
 	} catch (error) {
-			console.log("Error in Signup controller", error.message);
-			return res.status(500).json({ error: "Internal Server Error" });
+		console.log("Error in Signup controller", error.message);
+		return res.status(500).json({ error: "Internal Server Error" });
+	}
+}
+
+export const login = async (req, res) => {
+	try {
+		const { email, password } = req.body;
+		const user = await User.findOne({ email });
+		if (!user) {
+			return res.status(400).json({ error: "Cannot find User" });
+		}
+
+		const isPaswordCorrect = await bcrypt.compare(password, user.password || "");
+		if (!isPaswordCorrect) {
+			return res.status(400).json({ error: "Invalid Login Credentials" });
+		}
+
+		res.status(200).json({
+			_id: user._id,
+			name: user.name,
+			email: user.email,
+			mobileNo: user.mobileNo,
+			refernceCode: user.referenceCode
+		});
+	} catch (error) {
+		console.log("Error in Login controller", error.message);
+		res.status(500).json({ error: "Internal Server Error" });
+	}
+}
+
+export const logout = (req, res) => {
+	try {
+		res.status(200).json({ message: "Logged out Successfully" });
+	} catch (error) {
+		console.log("Error in Logout controller", error.message);
+		res.status(500).json({ error: "Internal Server Error" });
 	}
 }
