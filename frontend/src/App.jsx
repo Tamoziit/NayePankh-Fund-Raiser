@@ -21,7 +21,7 @@ function App() {
           <Route path="/login" element={authUser ? <Navigate to="/" /> : <Login />} />
           <Route path="/transactions" element={authUser ? <Transactions /> : <Navigate to="/login" />} />
           <Route path="/donate/:id" element={<DonationForm />} />
-          <Route path="/complete-order" element={<CompletePayment />} />
+          <Route path="/complete-order/:name/:email/:mobileNo/:referenceCode" element={<CompletePayment />} />
           <Route path="/cancel-order" element={<CancelPayment />} />
         </Routes>
 
