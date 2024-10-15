@@ -17,14 +17,11 @@ async function generateAccessToken() {
 const createOrder = async () => {
     const accessToken = await generateAccessToken();
 
-    // Get the most recent price entry
     const latestEntry = prices[prices.length - 1];
-    
-    // Check if priceBreakdown is valid
     const totalPrice = latestEntry.price;
 
     const items = [{
-        name: "Service/Product Name", // Update with actual name
+        name: "Service/Product Name",
         description: "Complete",
         quantity: 1,
         unit_amount: {
@@ -53,7 +50,7 @@ const createOrder = async () => {
             }
         }],
         application_context: {
-            return_url: `http://localhost:5173/complete-order/${encodeURIComponent(latestEntry.name)}/${encodeURIComponent(latestEntry.email)}/${encodeURIComponent(latestEntry.mobileNo)}/${encodeURIComponent(latestEntry.referenceCode)}`,
+            return_url: `http://localhost:5173/complete-order/${encodeURIComponent(latestEntry.name)}/${encodeURIComponent(latestEntry.email)}/${encodeURIComponent(latestEntry.mobileNo)}/${encodeURIComponent(latestEntry.referenceCode)}/${encodeURIComponent(latestEntry.price)}`,
             cancel_url: "http://localhost:5173/cancel-order",
             user_action: "PAY_NOW",
             brand_name: ""

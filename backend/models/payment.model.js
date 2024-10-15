@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const PaymentSchema = new mongoose.Schema({
-    orderId: { 
+    token: { 
         type: String, 
         required: true 
     },
-    payer: { 
-        type: Object, 
+    payerId: { 
+        type: String, 
         required: true 
     },
     name: {
@@ -17,28 +17,20 @@ const PaymentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    mobileNo: {
+        type: String,
+        required: true
+    },
     referenceCode: {
         type: String,
         required: true,
         min: 7,
         max: 7,
     },
-    purchase_units: { 
-        type: Array, 
-        required: true 
-    },
-    status: { 
-        type: String, 
-        required: true 
-    },
     amount: { 
-        type: String, 
+        type: Number, 
         required: true 
-    },
-    currency: { 
-        type: String, 
-        required: true 
-    },
+    }
 }, { timestamps: true });
 
 const Payment = mongoose.model("Payment", PaymentSchema);
