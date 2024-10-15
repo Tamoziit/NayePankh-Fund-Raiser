@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .neon-text {
+        text-shadow: 0 0 3px rgba(255, 255, 255, 0.4),
+            0 0 6px rgba(255, 255, 255, 0.4),
+            0 0 12px rgba(255, 255, 255, 0.4),
+            0 0 18px #ff0044,
+            /* Cyan glow */
+            0 0 24px #00FFFF;
+    }
+}
