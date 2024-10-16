@@ -4,7 +4,7 @@ const Header = () => {
     const { authUser } = useAuthContext();
 
     return (
-        <div className="absolute top-0 w-full bg-white p-2 shadow-md">
+        <div className="absolute top-0 w-full bg-white p-2 shadow-md z-10">
             <div className="flex gap-2 items-center justify-end mr-10">
                 <img src="profile.jpg" alt={authUser.name} className="rounded-lg w-[40px] h-[40px]" />
                 <div className="flex flex-col">

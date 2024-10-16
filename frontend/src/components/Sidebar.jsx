@@ -48,7 +48,7 @@ const Sidebar = () => {
     ];
 
     return (
-        <div className="absolute left-0 h-full bg-white shadow-lg z-20 px-4 w-[240px]">
+        <div className="absolute left-0 h-[107vh] bg-white shadow-lg z-20 px-4 w-[240px]">
             <div className="flex items-center gap-2 px-4 py-2 w-full">
                 <div className="border-[3px] border-blue-500 rounded-lg px-10 py-2">
                     <span className="text-blue-500 font-semibold">Logo</span>
