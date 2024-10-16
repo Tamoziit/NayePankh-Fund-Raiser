@@ -50,8 +50,8 @@ const createOrder = async () => {
             }
         }],
         application_context: {
-            return_url: `http://localhost:5000/complete-order/${encodeURIComponent(latestEntry.name)}/${encodeURIComponent(latestEntry.email)}/${encodeURIComponent(latestEntry.mobileNo)}/${encodeURIComponent(latestEntry.referenceCode)}/${encodeURIComponent(latestEntry.price)}`,
-            cancel_url: "http://localhost:5000/cancel-order",
+            return_url: `${process.env.VITE_APP_URL}/complete-order/${encodeURIComponent(latestEntry.name)}/${encodeURIComponent(latestEntry.email)}/${encodeURIComponent(latestEntry.mobileNo)}/${encodeURIComponent(latestEntry.referenceCode)}/${encodeURIComponent(latestEntry.price)}`,
+            cancel_url: `${process.env.VITE_APP_URL}/cancel-order`,
             user_action: "PAY_NOW",
             brand_name: ""
         }
