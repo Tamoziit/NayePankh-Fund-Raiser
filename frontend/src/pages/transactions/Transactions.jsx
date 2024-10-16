@@ -44,7 +44,7 @@ const Transactions = () => {
             <span>Loading...</span>
           ) : transactionData ? (
             <div className="flex flex-col gap-3 mt-10">
-              {transactionData.map((transaction, index) => (
+              {transactionData.slice().reverse().map((transaction, index) => (
                 <TransactionCard data={transaction} key={index} />
               ))}
             </div>

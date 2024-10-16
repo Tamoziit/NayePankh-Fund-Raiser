@@ -1,8 +1,10 @@
 import { useState } from "react"
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const usePaymentHandler = () => {
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const handlePayment = async ({
         token,
@@ -29,7 +31,8 @@ const usePaymentHandler = () => {
             }
 
             if (data) {
-                toast.success("Payment made Successfully");
+                toast.success("Donation made Successfully");
+                navigate("/gratitude");
             }
         } catch (error) {
             if (error instanceof Error) {
