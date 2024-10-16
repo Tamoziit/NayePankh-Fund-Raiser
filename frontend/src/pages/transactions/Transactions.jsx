@@ -19,14 +19,12 @@ const Transactions = () => {
     getTransactions();
   }, []);
 
-  console.log(transactionData);
-
   return (
     <div>
       <Header />
       <Sidebar />
 
-      <div className="absolute ml-[240px] mt-[69px] bg-gray-100 w-[165vh] h-full px-10 py-6">
+      <div className="absolute ml-[240px] mt-[69px] bg-gray-100 w-[165vh] h-full px-10 py-6 overflow-hidden">
         <div className="flex items-center justify-between w-full">
           <h1 className="font-bold text-xl">Transactions</h1>
 
@@ -39,11 +37,11 @@ const Transactions = () => {
           </div>
         </div>
 
-        <div>
+        <div className="mt-10 h-full overflow-auto">
           {loading ? (
             <span>Loading...</span>
-          ) : transactionData ? (
-            <div className="flex flex-col gap-3 mt-10">
+          ) : transactionData && transactionData.length > 0 ? (
+            <div className="flex flex-col gap-3">
               {transactionData.slice().reverse().map((transaction, index) => (
                 <TransactionCard data={transaction} key={index} />
               ))}
@@ -57,4 +55,4 @@ const Transactions = () => {
   )
 }
 
-export default Transactions
+export default Transactions;

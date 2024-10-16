@@ -9,7 +9,7 @@ const useGetTransactions = () => {
     const transactions = async () => {
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:5000/np/api/v1/payment/transactions/${authUser.referenceCode}`, {
+            const res = await fetch(`/np/api/v1/payment/transactions/${authUser.referenceCode}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"

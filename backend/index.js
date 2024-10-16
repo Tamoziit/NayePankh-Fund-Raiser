@@ -4,9 +4,12 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
 import session from "express-session";
 import connectRedis from "connect-redis";
 dotenv.config();
+
+const __dirname = path.resolve();
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import authRoutes from "./routes/auth.routes.js";
@@ -60,6 +63,15 @@ app.get("/np/api/v1", (req, res) => {
 //routes
 app.use("/np/api/v1/auth", authRoutes);
 app.use("/np/api/v1/payment", paymentRoutes);
+
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "form-action 'self' http://localhost:5000/np/api/v1/payment/pay;");
+    next();
+});
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 app.listen(PORT, () => {
     connectToMongoDB();

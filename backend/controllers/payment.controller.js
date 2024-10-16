@@ -25,7 +25,7 @@ export const paymentHandler = async (req, res) => {
         prices.push(price);
         console.log("payment handler prices", prices)
         const url = await createOrder();
-        res.redirect(url);
+        res.json({ redirectUrl: url });
     } catch (err) {
         console.error("Error in paymentHandler", err.response ? err.response.data : err.message);
         res.status(500).json({ error: "Internal Server Error" });

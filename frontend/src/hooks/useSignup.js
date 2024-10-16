@@ -17,7 +17,7 @@ const useSignup = () => {
 
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:5000/np/api/v1/auth/signup", {
+            const res = await fetch("/np/api/v1/auth/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

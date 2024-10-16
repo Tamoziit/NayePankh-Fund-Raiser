@@ -17,7 +17,7 @@ const usePaymentHandler = () => {
     }) => {
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:5000/np/api/v1/payment/payment-resolve", {
+            const res = await fetch("/np/api/v1/payment/payment-resolve", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
