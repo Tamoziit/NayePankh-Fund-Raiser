@@ -12,7 +12,7 @@ const Analytics = () => {
 	const [target, setTarget] = useState(0);
 	const [percentage, setPercentage] = useState(0);
 	const { authUser } = useAuthContext();
-	const linkToShare = `http://localhost:5000/donate/${authUser.referenceCode}`;
+	const linkToShare = `https://nayepankh-fund-raiser-portal.onrender.com/donate/${authUser.referenceCode}`;
 
 	const getTransactions = async () => {
 		const data = await transactions();
