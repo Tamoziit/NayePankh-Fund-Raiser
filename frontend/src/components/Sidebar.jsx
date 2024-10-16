@@ -48,25 +48,26 @@ const Sidebar = () => {
     ];
 
     return (
-        <div className="absolute left-0 h-[164vh] bg-white shadow-lg z-20 px-4 w-[240px]">
+        <div className="fixed left-0 h-full bg-white shadow-lg z-20 px-4 lg:w-[240px] md:w-[90px] sm:w-[90px]">
             <div className="flex items-center gap-2 px-4 py-2 w-full">
-                <div className="border-[3px] border-blue-500 rounded-lg px-10 py-2">
+                <div className="border-[3px] border-blue-500 rounded-lg px-10 py-2 lg:block md:hidden">
                     <span className="text-blue-500 font-semibold">Logo</span>
                 </div>
-                <HiOutlineSquares2X2 className="text-lg" />
+                <HiOutlineSquares2X2 className="text-lg md:text-xl" />
             </div>
 
-            <div className="flex flex-col bg-red-100 rounded-lg px-2 py-3 mt-[40px] justify-start">
+            {/* Visible only on small screens */}
+            <div className="lg:flex flex-col bg-red-100 rounded-lg px-2 py-3 mt-[40px] justify-start md:hidden sm:hidden">
                 <span className="font-semibold text-red-600 text-md">General</span>
                 <span className="text-xs text-gray-500">Dashboard</span>
             </div>
 
             <div className="flex flex-col w-full mt-4">
-                {options.map((option, _idx) =>(
-                    <div className="flex gap-2 items-center rounded-lg px-2 py-3 hover:bg-red-500 hover:text-white hover:font-semibold cursor-pointer" key={_idx}>
+                {options.map((option, _idx) => (
+                    <Link className="flex gap-2 items-center rounded-lg px-2 py-3 hover:bg-red-500 hover:text-white hover:font-semibold cursor-pointer" key={_idx} to={option.link}>
                         {option.logo}
-                        <Link to={option.link}>{option.name}</Link>
-                    </div>
+                        <span className="lg:block md:hidden xs:hidden">{option.name}</span>
+                    </Link>
                 ))}
             </div>
         </div>

@@ -26,6 +26,14 @@ const userSchema = new mongoose.Schema({
         min: 7,
         max: 7,
         required: true
+    },
+    assignedTarget: {
+        type: Number,
+        required: true
+    },
+    level: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 

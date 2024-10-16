@@ -31,7 +31,9 @@ export const signup = async (req, res) => {
 			email,
 			password: hashedPassword,
 			mobileNo,
-			referenceCode
+			referenceCode,
+			assignedTarget: 30000,
+			level: "Star"
 		});
 
 		if (newUser) {
@@ -43,7 +45,9 @@ export const signup = async (req, res) => {
 				name: newUser.name,
 				email: newUser.email,
 				mobileNo: newUser.mobileNo,
-				referenceCode: newUser.referenceCode
+				referenceCode: newUser.referenceCode,
+				assignedTarget: newUser.assignedTarget,
+				level: newUser.level
 			});
 		} else {
 			return res.status(400).json({ error: "Invalid User Data" });

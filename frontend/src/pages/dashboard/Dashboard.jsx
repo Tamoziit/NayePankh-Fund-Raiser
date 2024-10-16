@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext"
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
@@ -13,7 +12,7 @@ const Dashboard = () => {
 			<Header />
 			<Sidebar />
 
-			<div className="absolute ml-[240px] mt-[69px] bg-gray-100 w-[165vh] px-10 py-6">
+			<div className="absolute lg:ml-[240px] md:ml-[80px] mt-[69px] bg-gray-100 lg:w-[165vh] px-10 py-6">
 				<div className="flex items-center justify-between w-full">
 					<h1 className="font-bold text-xl">Dashboard</h1>
 

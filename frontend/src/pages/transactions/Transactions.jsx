@@ -24,7 +24,7 @@ const Transactions = () => {
       <Header />
       <Sidebar />
 
-      <div className="absolute ml-[240px] mt-[69px] bg-gray-100 w-[165vh] h-full px-10 py-6 overflow-hidden">
+      <div className="absolute lg:ml-[240px] md:ml-[80px] mt-[69px] bg-gray-100 w-[165vh] h-[163vh] px-10 py-6 overflow-hidden">
         <div className="flex items-center justify-between w-full">
           <h1 className="font-bold text-xl">Transactions</h1>
 

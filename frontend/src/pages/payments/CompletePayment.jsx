@@ -71,7 +71,7 @@ const CompletePayment = () => {
 						</div>
 						<div className="flex justify-between">
 							<span className="font-semibold">Amount:</span>
-							<span>₹ {paramsData.amount || 'N/A'}</span>
+							<span>$ {paramsData.amount || 'N/A'}</span>
 						</div>
 						<div className="flex justify-between">
 							<span className="font-semibold">Token:</span>

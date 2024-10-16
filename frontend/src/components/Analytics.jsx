@@ -5,14 +5,12 @@ import { useAuthContext } from "../context/AuthContext";
 import { FaRegStar } from "react-icons/fa";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { FaWhatsapp } from "react-icons/fa";
-import { user_data } from "../data/intentFile.json";
 import toast from "react-hot-toast";
 
 const Analytics = () => {
 	const { loading, transactions } = useGetTransactions();
 	const [target, setTarget] = useState(0);
 	const [percentage, setPercentage] = useState(0);
-	const [userData, setUserData] = useState(null);
 	const { authUser } = useAuthContext();
 	const linkToShare = `http://localhost:5000/donate/${authUser.referenceCode}`;
 
@@ -24,27 +22,16 @@ const Analytics = () => {
 		}
 	};
 
-	const getUserData = () => {
-		const res = user_data.find((data) => data.referenceCode === authUser.referenceCode);
-		console.log(res);
-		if (res) {
-			setUserData(res);
-		} else {
-			toast.error("No details found");
-		}
-	};
-
 	useEffect(() => {
-		getUserData();
 		getTransactions();
 	}, []);
 
 	useEffect(() => {
-		if (userData) {
-			const calculatedPercentage = ((target / userData.assignedTarget) * 100).toFixed(1);
+		if (authUser) {
+			const calculatedPercentage = ((target / authUser.assignedTarget) * 100).toFixed(1);
 			setPercentage(calculatedPercentage);
 		}
-	}, [userData, target]);
+	}, [target]);
 
 	const copyToClipboard = () => {
 		navigator.clipboard.writeText(linkToShare)
@@ -63,20 +50,20 @@ const Analytics = () => {
 
 	return (
 		<>
-			{userData ? (
-				<div className="w-full flex gap-20 justify-between p-10 bg-white rounded-lg">
+			{authUser ? (
+				<div className="w-full flex gap-20 justify-between p-10 bg-white rounded-lg md:flex-col lg:flex-row">
 					{loading ? (<span>Loading</span>) : (
 						<div className="flex flex-col items-center justify-center">
 							<ProgressTracker progress={percentage} />
 							<span className="text-red-600 font-semibold">Total Goal</span>
-							<span className="text-xl font-bold">${userData.assignedTarget}</span>
+							<span className="text-xl font-bold">${authUser.assignedTarget}</span>
 						</div>
 					)}
 
 					<div className="flex flex-col gap-3 items-center justify-center">
 						<div>
 							<span className="text-red-600 font-semibold">Level Achieved : </span>
-							<span className="font-bold">{userData.level}</span>
+							<span className="font-bold">{authUser.level}</span>
 						</div>
 
 						<div className="bg-gray-300 w-[500px] h-1"></div>
