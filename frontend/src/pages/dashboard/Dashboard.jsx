@@ -3,6 +3,7 @@ import { useAuthContext } from "../../context/AuthContext"
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 import { FaHome } from "react-icons/fa";
+import Analytics from "../../components/Analytics";
 
 const Dashboard = () => {
 	const { authUser } = useAuthContext();
@@ -12,7 +13,7 @@ const Dashboard = () => {
 			<Header />
 			<Sidebar />
 
-			<div className="absolute ml-[240px] mt-[69px] bg-gray-100 w-[165vh] h-full px-10 py-6">
+			<div className="absolute ml-[240px] mt-[69px] bg-gray-100 w-[165vh] px-10 py-6">
 				<div className="flex items-center justify-between w-full">
 					<h1 className="font-bold text-xl">Dashboard</h1>
 
@@ -35,6 +36,10 @@ const Dashboard = () => {
 							<span className="font-semibold italic">Initial push is the toughest! Go through the leraning modules, or rreach out to your fundraising manager to level up.</span>
 						</div>
 					</div>
+				</div>
+
+				<div>
+					<Analytics />
 				</div>
 			</div>
 		</div>
