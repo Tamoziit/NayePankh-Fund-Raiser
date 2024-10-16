@@ -32,7 +32,7 @@ const usePaymentHandler = () => {
 
             if (data) {
                 toast.success("Donation made Successfully");
-                navigate("https://nayepankh-fund-raiser-portal.onrender.com/gratitude");
+                navigate("/gratitude");
             }
         } catch (error) {
             if (error instanceof Error) {
